@@ -35,6 +35,8 @@ public class MyService extends Service {
     private MediaPlayer mMediaPlayer;
     private boolean isPlaying;
     private Song mSong;
+    private String res ="";
+    private Double kq= 0.0;
 
     @Override
     public void onCreate() {
@@ -66,20 +68,30 @@ public class MyService extends Service {
 //         handleActionMusic(actionMusic);
 
          if(intent.getIntExtra("action",0) != 0){
+             Song s1 = new Song(intent.getStringExtra("NumA"),intent.getStringExtra("NumB")
+             ,intent.getIntExtra("image",R.drawable.cong),R.drawable.cong);
              int action = intent.getIntExtra("action",0);
              Add(intent.getStringExtra("NumA"),intent.getStringExtra("NumB"));
+//             s1.setTitle(intent.getStringExtra("NumA"));
+//             s1.setSingle(intent.getStringExtra("NumB"));
+//             s1.setImage(R.drawable.cong);
+//             s1.setResourece(0);
              switch (action){
                  case 11:
                      Add(intent.getStringExtra("NumA"),intent.getStringExtra("NumB"));
+                     sendNotification(s1);
                      break;
                  case 22:
                      Tru(intent.getStringExtra("NumA"),intent.getStringExtra("NumB"));
+                     sendNotification(s1);
                      break;
                  case 33:
                      Nhan(intent.getStringExtra("NumA"),intent.getStringExtra("NumB"));
+                     sendNotification(s1);
                      break;
                  case 44:
                      Chia(intent.getStringExtra("NumA"),intent.getStringExtra("NumB"));
+                     sendNotification(s1);
                      break;
                  case 55:
                      stopSelf();
@@ -94,18 +106,21 @@ public class MyService extends Service {
         Double a = Double.parseDouble(numA);
         Double b = Double.parseDouble(numB);
         Double result = a + b;
+        kq= result;
         sendActiontoActivity(11,result);
     }
     private void Tru(String numA, String numB) {
         Double a = Double.parseDouble(numA);
         Double b = Double.parseDouble(numB);
         Double result = a - b;
+        kq= result;
         sendActiontoActivity(22,result);
     }
     private void Nhan(String numA, String numB) {
         Double a = Double.parseDouble(numA);
         Double b = Double.parseDouble(numB);
         Double result = a * b;
+        kq= result;
         sendActiontoActivity(33,result);
     }
 
@@ -113,6 +128,7 @@ public class MyService extends Service {
         int a = Integer.parseInt(numA);
         int b = Integer.parseInt(numB);
         double result = a / b;
+        kq= result;
         sendActiontoActivity(44,result);
     }
 
@@ -167,24 +183,25 @@ public class MyService extends Service {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),song.getImage());
 
 
-        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.layout_custom_notification);
-        remoteViews.setTextViewText(R.id.tv_title_song, song.getTitle());
-        remoteViews.setTextViewText(R.id.tv_single_song, song.getSingle());
-        remoteViews.setImageViewBitmap(R.id.img_song,bitmap);
+        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.custom);
+        remoteViews.setTextViewText(R.id.tvA, song.getTitle()+"");
+        remoteViews.setTextViewText(R.id.tvB, song.getSingle()+"");
+        remoteViews.setTextViewText(R.id.tvKetQua, kq+"");
+//        remoteViews.setImageViewBitmap(R.id.img_song1,bitmap);//tvKetQua
 
         //icon nhỏ
-        remoteViews.setImageViewResource(R.id.img_play_or_pause,R.drawable.ic_play);
-        remoteViews.setImageViewResource(R.id.img_clear,R.drawable.ic_clear);
-
-        //Bắt sự kiện cho component trong custom notification
-        if(isPlaying){
-            //Nếu như đang chạy mà click chọn sư kiện nút img_play thì nó sẽ pause lại
-            remoteViews.setOnClickPendingIntent(R.id.img_play_or_pause,getPendingIntent(this, ACTION_PAUSE));
-            remoteViews.setImageViewResource(R.id.img_play_or_pause,R.drawable.ic_pause);
-        }else{
-            remoteViews.setOnClickPendingIntent(R.id.img_play_or_pause,getPendingIntent(this, ACTION_RESUME));
-            remoteViews.setImageViewResource(R.id.img_play_or_pause,R.drawable.ic_play);
-        }
+//        remoteViews.setImageViewResource(R.id.img_play_or_pause,R.drawable.ic_play);
+//        remoteViews.setImageViewResource(R.id.img_clear,R.drawable.ic_clear);
+//
+//        //Bắt sự kiện cho component trong custom notification
+//        if(isPlaying){
+//            //Nếu như đang chạy mà click chọn sư kiện nút img_play thì nó sẽ pause lại
+//            remoteViews.setOnClickPendingIntent(R.id.img_play_or_pause,getPendingIntent(this, ACTION_PAUSE));
+//            remoteViews.setImageViewResource(R.id.img_play_or_pause,R.drawable.ic_pause);
+//        }else{
+//            remoteViews.setOnClickPendingIntent(R.id.img_play_or_pause,getPendingIntent(this, ACTION_RESUME));
+//            remoteViews.setImageViewResource(R.id.img_play_or_pause,R.drawable.ic_play);
+//        }
 
         remoteViews.setOnClickPendingIntent(R.id.img_clear,getPendingIntent(this, ACTION_CLEAR));
 

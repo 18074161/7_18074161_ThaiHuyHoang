@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         btnSopService = findViewById(R.id.btn_stop_service);
 
         layoutBottom = findViewById(R.id.layout_bottom);
-        imgSong = findViewById(R.id.img_song);
+        imgSong = findViewById(R.id.img_song1);
         imgPlayOrPause = findViewById(R.id.img_play_or_pause);
         imgClear = findViewById(R.id.img_clear);
         tvTitleSong = findViewById(R.id.tv_title_song);
@@ -86,25 +86,25 @@ public class MainActivity extends AppCompatActivity {
         btnStartService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickStartService(11);
+                clickStartService(11,R.drawable.cong);
             }
         });
         btnTru.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickStartService(22);
+                clickStartService(22,R.drawable.tru);
             }
         });
         btnNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickStartService(33);
+                clickStartService(33,R.drawable.nhana);
             }
         });
         btnChia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickStartService(44);
+                clickStartService(44,R.drawable.chia);
             }
         });
 
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void clickStartService(int action) {
+    private void clickStartService(int action,int image) {
         Song song = new Song("Big city boy", "Tincoder", R.drawable.img_music,R.raw.file_isaac);
 
         // COntext    Service muốn chạy
@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("action",action);
         intent.putExtra("NumA",txtA.getText().toString());
         intent.putExtra("NumB",txtB.getText().toString());
+        intent.putExtra("image",R.drawable.nhana);
         startService(intent);//chạy onCreate lần đầu rồi chạy onStartCommand
     }
 
