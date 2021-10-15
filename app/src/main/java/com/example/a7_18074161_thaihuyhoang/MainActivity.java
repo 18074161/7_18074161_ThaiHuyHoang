@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -118,15 +119,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void clickStartService(int action,int image) {
         Song song = new Song("Big city boy", "Tincoder", R.drawable.img_music,R.raw.file_isaac);
-
-        // COntext    Service muốn chạy
-        Intent intent = new Intent(this,MyService.class);
+        if(txtA.getText().equals("") || txtB.getText().equals("")){
+            Toast.makeText(this, "Chưa Giá trị để tính toán", Toast.LENGTH_SHORT).show();
+        }else{
+            try{
+                Double a = Double.parseDouble(txtA.getText().toString());
+                Double b = Double.parseDouble(txtB.getText().toString());
+                if (b == 0.0 && action == 44) {
+                    Toast.makeText(this, "Không thể chia cho 0", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(this,MyService.class);
 //        intent.putExtra("object_song",song);
-        intent.putExtra("action",action);
-        intent.putExtra("NumA",txtA.getText().toString());
-        intent.putExtra("NumB",txtB.getText().toString());
-        intent.putExtra("image",image);
-        startService(intent);//chạy onCreate lần đầu rồi chạy onStartCommand
+                    intent.putExtra("action",action);
+                    intent.putExtra("NumA",txtA.getText().toString());
+                    intent.putExtra("NumB",txtB.getText().toString());
+                    intent.putExtra("image",image);
+                    startService(intent);//chạy onCreate lần đầu rồi chạy onStartCommand
+                }
+
+            }catch (Exception e){
+                Toast.makeText(this, "Bạn phải nhập số thực", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        // COntext    Service muốn chạy
+
     }
 
     private void clickStopService() {
