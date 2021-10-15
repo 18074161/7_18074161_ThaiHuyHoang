@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("action",action);
         intent.putExtra("NumA",txtA.getText().toString());
         intent.putExtra("NumB",txtB.getText().toString());
-        intent.putExtra("image",R.drawable.nhana);
+        intent.putExtra("image",image);
         startService(intent);//chạy onCreate lần đầu rồi chạy onStartCommand
     }
 

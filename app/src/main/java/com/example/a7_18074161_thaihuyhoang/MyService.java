@@ -187,7 +187,7 @@ public class MyService extends Service {
         remoteViews.setTextViewText(R.id.tvA, song.getTitle()+"");
         remoteViews.setTextViewText(R.id.tvB, song.getSingle()+"");
         remoteViews.setTextViewText(R.id.tvKetQua, kq+"");
-//        remoteViews.setImageViewBitmap(R.id.img_song1,bitmap);//tvKetQua
+        remoteViews.setImageViewBitmap(R.id.img_song1,bitmap);//tvKetQua
 
         //icon nhỏ
 //        remoteViews.setImageViewResource(R.id.img_play_or_pause,R.drawable.ic_play);
