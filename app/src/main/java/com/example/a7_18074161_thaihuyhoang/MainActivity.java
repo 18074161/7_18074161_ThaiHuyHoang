@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSopService;
 
     private RelativeLayout layoutBottom;
-    private ImageView imgSong, imgPlayOrPause, imgClear;
+    private ImageView imgSong, imgPlayOrPause, imgClear,img1,img2;
     private TextView tvTitleSong, tvSingleSong,txtKetQua;
 
     private Song mSong;
@@ -71,6 +73,14 @@ public class MainActivity extends AppCompatActivity {
         btnChia = findViewById(R.id.btnChia);
         btnNhan = findViewById(R.id.btnNhan);
         btnTru = findViewById(R.id.btnTru);
+        img1 = findViewById(R.id.img1);
+        img2 = findViewById(R.id.img2);
+
+        Animation xoay = AnimationUtils.loadAnimation(this,R.anim.anim_taylor);
+        Animation amnhac = AnimationUtils.loadAnimation(this,R.anim.anim_rotate);
+
+        img1.startAnimation(xoay);
+        img2.startAnimation(amnhac);
 
         btnStartService.setOnClickListener(new View.OnClickListener() {
             @Override
