@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,54 +7,16 @@
     android:background="#FFFFFF"
 
     android:orientation="vertical"
+    app:layoutDescription="@xml/activity_main_scene"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:id="@+id/btn_start_service"
-        android:layout_width="98dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="464dp"
-        android:text="Cộng"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnChia"
-        android:layout_width="98dp"
-        android:layout_height="97dp"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="464dp"
-        android:text="Chia"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnNhan"
-        android:layout_width="98dp"
-        android:layout_height="97dp"
-        android:layout_marginStart="204dp"
-        android:layout_marginTop="464dp"
-        android:text="Nhân"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnTru"
-        android:layout_width="98dp"
-        android:layout_height="97dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="464dp"
-        android:text="Nhân"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_stop_service"
         android:layout_width="98dp"
         android:layout_height="97dp"
-        android:layout_marginBottom="80dp"
-        android:text="Trừ"
+        android:layout_marginBottom="168dp"
+        android:text="Stop Service"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -134,8 +96,9 @@
         android:layout_height="68dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="60dp"
-        android:background="#DCD9D9"
+        android:background="#FFFFFF"
         android:ems="10"
+        android:gravity="center"
         android:hint="Nhập A"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -148,6 +111,8 @@
         android:layout_marginTop="144dp"
         android:layout_marginEnd="60dp"
         android:ems="10"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:hint="Nhập B"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,9 +122,10 @@
         android:id="@+id/txtKetQua"
         android:layout_width="221dp"
         android:layout_height="50dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="284dp"
-        android:text="TextView"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="392dp"
+        android:gravity="center"
+        android:text="Kết Quả"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -168,8 +134,8 @@
         android:id="@+id/img1"
         android:layout_width="73dp"
         android:layout_height="64dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="372dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_on" />
@@ -178,10 +144,62 @@
         android:id="@+id/img2"
         android:layout_width="69dp"
         android:layout_height="72dp"
-        android:layout_marginTop="372dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_dialog" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/btn_start_service"
+        android:layout_width="91dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="256dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cong"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnChia"
+        android:layout_width="91dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="16dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNhan"
+        app:layout_constraintStart_toEndOf="@+id/btnNhan"
+        app:layout_constraintTop_toTopOf="@+id/btnNhan"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/chia"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnTru"
+        android:layout_width="91dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="24dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start_service"
+        app:layout_constraintStart_toEndOf="@+id/btn_start_service"
+        app:layout_constraintTop_toTopOf="@+id/btn_start_service"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/tru"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnNhan"
+        android:layout_width="91dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="16dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/btnTru"
+        app:layout_constraintStart_toEndOf="@+id/btnTru"
+        app:layout_constraintTop_toTopOf="@+id/btnTru"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/nhana"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

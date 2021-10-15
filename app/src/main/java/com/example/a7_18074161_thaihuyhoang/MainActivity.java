@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,7 +21,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private EditText edtDataIntent,txtA,txtB;
-    private Button btnStartService,btnTru, btnNhan, btnChia;
+    private ImageButton btnStartService,btnTru, btnNhan, btnChia;
     private Button btnSopService;
 
     private RelativeLayout layoutBottom;
